@@ -51,12 +51,14 @@ printf 'export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"
 printf 'export PATH="%s/lib:${PATH}"\n' "${ccache_prefix}" >> "${HOME}/.bashrc"
 printf 'export CUDA_NVCC_EXECUTABLE="%s/cuda/nvcc"\n' "${ccache_prefix}" >> "${HOME}/.bashrc"
 
+# Disabling LLVM's ld because it causes errors similar to https://github.com/pytorch/pytorch/issues/21700
+# 
 # Use ld from LLVM
-package='clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04'
-(
-    cd "${HOME}"
-    curl -sO "https://releases.llvm.org/8.0.0/${package}.tar.xz"
-    tar -xf "${package}.tar.xz"
-    sudo ln -s "${PWD}/${package}/bin/ld.lld" '/usr/local/bin/ld'
-    rm "${package}.tar.xz"
-)
+# package='clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04'
+# (
+#     cd "${HOME}"
+#     curl -sO "https://releases.llvm.org/8.0.0/${package}.tar.xz"
+#     tar -xf "${package}.tar.xz"
+#     sudo ln -s "${PWD}/${package}/bin/ld.lld" '/usr/local/bin/ld'
+#     rm "${package}.tar.xz"
+# )
