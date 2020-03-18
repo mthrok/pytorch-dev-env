@@ -28,7 +28,7 @@ export PATH="${conda_prefix}/condabin/:${PATH}"
 eval "$(conda shell.bash hook)"
 conda create --name "${env_name}" python="${python_version}"
 conda activate "${env_name}"
-conda install -y numpy pyyaml scipy ipython mkl mkl-include ninja cython hypothesis
+conda install -y numpy pyyaml scipy ipython mkl mkl-include ninja cython hypothesis mypy flake8 pylint
 conda install -y -c conda-forge ccache librosa
 if [ ! -z "${cuda_ver}" ]; then
     conda install -y -c pytorch "magma-${cuda_ver}"
