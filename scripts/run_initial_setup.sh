@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-sudo apt update
-sudo apt install -y emacs bash-completion less openssh-client
-sudo rm -rf /var/lib/apt/lists/*
-
 if [ ! -d pytorch ]; then
     git clone https://github.com/pytorch/pytorch
 fi
@@ -17,5 +13,6 @@ if [ ! -d torchaudio]; then
 fi
 (
     cd torchaudio
-    python setup.py develop
+    sh ./packaging/build_from_source.sh
+    IS_CONDA=1 python setup.py develop
 )

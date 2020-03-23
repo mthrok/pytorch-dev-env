@@ -47,7 +47,7 @@ ln -s "${CONDA_PREFIX}/bin/ccache" "${ccache_prefix}/cuda/nvcc"
 
 printf '\n' >> "${HOME}/.bashrc"
 printf 'conda activate %s\n' "${env_name}" >> "${HOME}/.bashrc"
-printf 'export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}\n' >> "${HOME}/.bashrc"
+printf 'export CMAKE_PREFIX_PATH=${CONDA_PREFIX}\n' >> "${HOME}/.bashrc"
 printf 'export PATH="%s/lib:${PATH}"\n' "${ccache_prefix}" >> "${HOME}/.bashrc"
 printf 'export CUDA_NVCC_EXECUTABLE="%s/cuda/nvcc"\n' "${ccache_prefix}" >> "${HOME}/.bashrc"
 
