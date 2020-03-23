@@ -13,6 +13,6 @@ if [ ! -d torchaudio]; then
 fi
 (
     cd torchaudio
-    sh ./packaging/build_from_source.sh
+    ./packaging/build_from_source.sh "$PWD"
     IS_CONDA=1 python setup.py develop
 )
