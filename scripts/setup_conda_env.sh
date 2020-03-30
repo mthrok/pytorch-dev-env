@@ -33,6 +33,7 @@ conda install -y -c conda-forge ccache librosa
 if [ ! -z "${cuda_ver}" ]; then
     conda install -y -c pytorch "magma-${cuda_ver}"
 fi
+pip install --no-cache-dir cmakelint
 conda clean -ya
 
 mkdir "${ccache_prefix}"
