@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 image_name="${USER}-pytorch-dev-env"
-work_dir="/scratch/${USER}/"
+work_dir="${HOME}/dev"
 # Note:
 # work_dir must have exact same permission as "$(id -u ${USER}):$(id -g ${USER}):",
 # otherwise you cannot write anything from the container.

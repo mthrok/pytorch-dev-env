@@ -16,3 +16,11 @@ fi
     ./packaging/build_from_source.sh "$PWD"
     IS_CONDA=1 python setup.py develop
 )
+
+if [ ! -d torchvision]; then
+    git clone https://github.com/pytorch/vision torchvision
+fi
+(
+    cd otrchvision
+    python setup.py develop
+)
