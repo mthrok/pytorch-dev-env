@@ -12,4 +12,13 @@ docker run -d --runtime=nvidia \
        -w "${work_dir}" \
        --name "${image_name}" \
        "${image_name}" sleep infinity
+
+if [ -f ~/.gitconfig ]; then
+    docker cp ~/.gitconfig "${image_name}:/home/${USER}"
+fi
+
+if [ -d ~/.emacs.d ]; then
+    docker cp ~/.emacs.d "${image_name}:/home/${USER}"
+fi
+
 docker exec -it "${image_name}" bash
