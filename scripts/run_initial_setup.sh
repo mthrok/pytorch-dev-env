@@ -21,6 +21,14 @@ if [ ! -d torchvision]; then
     git clone https://github.com/pytorch/vision torchvision
 fi
 (
-    cd otrchvision
+    cd torchvision
+    python setup.py develop
+)
+
+if [ ! -d torchtext]; then
+    git clone https://github.com/pytorch/text torchtext
+fi
+(
+    cd torchtext
     python setup.py develop
 )
