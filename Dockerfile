@@ -23,7 +23,7 @@ RUN addgroup --gid "$GID" "$USERNAME" &&\
 
 WORKDIR "$HOMEDIR"
 USER "$USERNAME"
-ADD . .
+COPY --chown=$UID:$GID . .
 RUN sudo ./scripts/install_prereqs.sh &&\
     ./scripts/install_conda.sh "${CONDA_BASE_DIR}" &&\
     ./scripts/setup_conda_env.sh "${CONDA_BASE_DIR}" "${PYTHON_VERSION}" "${CONDA_ENV_NAME}" "${HOMEDIR}/ccache"

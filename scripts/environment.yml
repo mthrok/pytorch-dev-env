@@ -1,0 +1,24 @@
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - ccache
+  - cython
+  - flake8
+  - hypothesis
+  - librosa
+  - libsndfile
+  - mkl
+  - mkl-include
+  - mypy
+  - ninja
+  - numpy
+  - pip
+  - pylint
+  - pysoundfile
+  - pytest
+  - pyyaml
+  - scipy
+  - pip:
+    - cmakelint==1.4.1

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -xo pipefail
 
+this_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 conda_prefix="$1"
 python_version="$2"
 env_name="$3"
@@ -26,14 +27,13 @@ fi
 # Setup Conda environment
 export PATH="${conda_prefix}/condabin/:${PATH}"
 eval "$(conda shell.bash hook)"
+
 conda create --name "${env_name}" python="${python_version}"
 conda activate "${env_name}"
-conda install -y numpy pyyaml scipy ipython mkl mkl-include ninja cython hypothesis mypy flake8 pylint pytest
-conda install -y -c conda-forge ccache librosa
+conda env update --file "${this_dir}/environment.yml" --prune
 if [ ! -z "${cuda_ver}" ]; then
     conda install -y -c pytorch "magma-${cuda_ver}"
 fi
-pip install --no-cache-dir cmakelint
 conda clean -ya
 
 mkdir "${ccache_prefix}"
